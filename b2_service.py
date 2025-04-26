@@ -48,12 +48,10 @@ class B2:
         """Delete a file from a Backblaze B2 bucket."""
         
         try:
-            response = self.s3_client.delete_object(
+            self.s3_client.delete_object(
                             Bucket=bucket_name,
                             Key=key
                         )
-
-            print("Delete Response:", response)
             print(f"File deleted from {bucket_name}")
         except NoCredentialsError:
             print("Credentials not available.")

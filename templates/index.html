@@ -97,8 +97,10 @@
             });
             if(response.ok) {
                 alert('File Deleted')
+                fileName.value = ''
             } else {
                 alert('Something went wrong')
+                fileName.value = ''
             }
             fileName.value = ''
         }

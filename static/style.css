@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f8;
     margin: 0;
@@ -51,4 +51,116 @@ button:hover {
     max-height: 150px;
     overflow-y: auto;
     margin-top: 10px;
+} */
+
+
+
+
+
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0b2512; 
+    color: #e0f5d0; 
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #143d26; 
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #a8f0c6;
+}
+
+.section {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="file"],
+input[type="text"] {
+    padding: 10px;
+    background-color: #0b2512;
+    border: 1px solid #3c6e4d;
+    border-radius: 8px;
+    color: #e0f5d0;
+    outline: none;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #3c6e4d;
+    color: #e0f5d0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #539c6e;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #3c6e4d;
+    color: #e0f5d0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #539c6e;
+}
+
+
+.file-list {
+    margin-top: 10px;
+    background-color: #0b2512;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #3c6e4d;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.file-list li {
+    margin-bottom: 8px;
+    list-style: none;
+    padding: 5px;
+    background-color: #143d26;
+    border-radius: 4px;
+} 
+
+
+
+
+.file-list li:hover {
+    background-color: #245f3c; /* slightly brighter green */
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* Animated button click */
+button:active {
+    transform: scale(0.96);
+    background-color: #2d523f;
 }
