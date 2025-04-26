@@ -1,15 +1,14 @@
-
 name: Simple FileStorage Service CI/CD
 
 on:
   push:
     branches: [main]
-  pull:
+  pull-request:
       branches: [main]
 
 jobs:
   Continuous-Integration:
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
       steps:
         - name: Checkout
@@ -37,7 +36,7 @@ jobs:
             echo "image=$DOCKER_REGISTRY/$DOCKER_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
 
-    Continuous-Deployment:
+  Continuous-Deployment:
       need: Continuous-Integration
       run-on: self-hosted
 
