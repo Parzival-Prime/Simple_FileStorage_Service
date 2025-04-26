@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple FileStorage Service</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>Simple FileStorage Service</h1>
+
+        <div class="section">
+            <input type="file" id="uploadFile">
+            <button onclick="uploadFile()">Upload File</button>
+        </div>
+
+        <div class="section">
+            <button onclick="viewFiles()">View Files</button>
+            <div id="fileList" class="file-list"></div>
+        </div>
+
+        <div class="section">
+            <input type="text" id="downloadFileName" placeholder="Enter filename to download">
+            <button onclick="downloadFile()">Download File</button>
+        </div>
+
+        <div class="section">
+            <input type="text" id="deleteFileName" placeholder="Enter filename to delete">
+            <button onclick="deleteFile()">Delete File</button>
+        </div>
+    </div>
+</body>
+
+
+
+
+<script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('uploadFile');
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+
+            if (response.ok) {
+                alert('File Uploaded');
+                fileInput.value = ''; // Clear the selected file
+            } else {
+                alert('Upload failed');
+            }
+        }
+
+
+        async function downloadFile() {
+            const fileName = document.getElementById('downloadFileName').value;
+            const formData = new FormData();
+            formData.append('file_name', fileName);
+            const response = await fetch('/download', {
+                method: 'POST',
+                body: formData
+            });
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            const a = Object.assign(document.createElement('a'), { href: url, download: fileName });
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+            fileName.value = ''
+        }
+        
+
+        async function viewFiles() {
+            const response = await fetch('/viewfiles')
+            const files = await response.json()
+            const fileList = document.getElementById('fileList')
+            fileList.innerHTML = ''
+            files.forEach(file => {
+                const li = document.createElement('li')
+                li.textContent = file
+                fileList.append(li)
+            });
+        }
+
+        async function deleteFile(){
+            const fileName = document.getElementById('deleteFileName').value;
+            const formData = new FormData();
+            formData.append('file_name', fileName);
+            const response = await fetch('/delete', {
+                method: 'POST',
+                body: formData
+            });
+            if(response.ok) {
+                alert('File Deleted')
+            } else {
+                alert('Something went wrong')
+            }
+            fileName.value = ''
+        }
+
+</script>
+</html>

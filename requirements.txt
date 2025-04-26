@@ -1,0 +1,11 @@
+fastapi
+docker
+python-multipart
+uvicorn
+jinja2
+imblearn
+boto3
+ipykernel
+mypy-boto3-s3
+botocore
+-e .

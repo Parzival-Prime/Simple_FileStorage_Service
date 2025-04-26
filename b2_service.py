@@ -33,22 +33,18 @@ class B2:
                                 config=my_config)
         
     
-    def upload_file(self, file_path, file_name, bucket_name):
+    def upload_file(self, object_file, file_name):
         """Upload a file to a specified Backblaze B2 bucket."""
         
-        with open(file_path, 'rb') as file:
-            object_name = file.read()
-        
         try:
-            res = self.s3_client.put_object(Key=file_name, Bucket=bucket_name, Body=object_name)
-            print(f"File uploaded Successfully!  Response: ", res)
+            self.s3_client.put_object(Key=file_name, Bucket=bucket_name, Body=object_file)
         except NoCredentialsError:
             print("Credentials not available.")
         except Exception as e:
             print(f"Error: {e}")
 
         
-    def delete_file(self, key, bucket_name):
+    def delete_file(self, key):
         """Delete a file from a Backblaze B2 bucket."""
         
         try:
@@ -79,7 +75,7 @@ class B2:
         
         
         
-b2_obj = B2()
-# b2_obj.upload_file(file_path='Resume.pdf', file_name='Resume.pdf', bucket_name=bucket_name)
-# b2_obj.download_file(file_name='dresume.pdf', bucket_name=bucket_name, key='Resume.pdf')
-b2_obj.delete_file(bucket_name=bucket_name, key='Resume.pdf')
+# b2_obj = B2()
+# # b2_obj.upload_file(file_path='Resume.pdf', file_name='Resume.pdf', bucket_name=bucket_name)
+# # b2_obj.download_file(file_name='dresume.pdf', bucket_name=bucket_name, key='Resume.pdf')
+# b2_obj.delete_file(bucket_name=bucket_name, key='Resume.pdf')
