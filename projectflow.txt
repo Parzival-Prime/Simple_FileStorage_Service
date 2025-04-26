@@ -1,0 +1,11 @@
+
+
+
+1. Create UI using html and css
+2. create api using fast api and uvicorn:
+        - create function to upload any file from system to S3 Storage in Backblaze
+        - create function to delete and download file from Storage
+3. Test it locally
+4. Create its docker image and upload on docker hub
+5. Create server load docker image from dockerhub to server and run on it.
+6. Then automate all steps, meabs integrate CI-CD
