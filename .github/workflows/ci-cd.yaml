@@ -50,3 +50,4 @@ jobs:
           -e DOCKERHUB_USERNAME="${{ secrets.DOCKERHUB_USERNAME }}" \
           -e DOCKERHUB_TOKEN="${{ secrets.DOCKERHUB_PASSWORD }}" \
           -p 8000:8000 "${{ secrets.DOCKER_REGISTRY }}"\"${{ secrets.DOCKER_REPOSITORY }}":latest
+          
