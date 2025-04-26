@@ -12,7 +12,7 @@ load_dotenv()
 access_key_id = os.getenv("B2_ACCESS_KEY_ID")
 application_key = os.getenv("B2_APPLICATION_KEY")
 bucket_name = os.getenv("B2_BUCKET_NAME")
-endpoint_url = os.getenv("S3_ENDPOINT_URL")
+endpoint_url = os.getenv("B2_S3_ENDPOINT_URL")
 
 my_config = Config(
     region_name='us-east-005',
