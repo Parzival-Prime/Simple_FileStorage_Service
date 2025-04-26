@@ -22,7 +22,7 @@ jobs:
       - name: Build, Tag, and Push image to dockerhub
         id: build-image
         env:
-          DOCKER_REGISTRY: ${{ steps.docker-login.outputs.registry }}
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
           DOCKER_REPOSITORY: ${{ secrets.DOCKER_REPOSITORY }}
           IMAGE_TAG: latest
         run: |
@@ -49,4 +49,4 @@ jobs:
           -e DOCKER_REPOSITORY="${{ secrets.DOCKER_REPOSITORY }}" \
           -e DOCKERHUB_USERNAME="${{ secrets.DOCKERHUB_USERNAME }}" \
           -e DOCKERHUB_TOKEN="${{ secrets.DOCKERHUB_PASSWORD }}" \
-          -p 8000:8000 "${{ steps.docker-login.outputs.registry }}"\"${{ secrets.DOCKER_REPOSITORY }}":latest
+          -p 8000:8000 "${{ secrets.DOCKER_REGISTRY }}"\"${{ secrets.DOCKER_REPOSITORY }}":latest
