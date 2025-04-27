@@ -51,7 +51,7 @@ jobs:
           -e B2_ACCESS_KEY_ID="${{ secrets.B2_ACCESS_KEY_ID }}" \
           -e B2_APPLICATION_KEY="${{ secrets.B2_APPLICATION_KEY }}" \
           -e B2_BUCKET_NAME="${{ secrets.B2_BUCKET_NAME }}" \
-          -e B2_S3_ENDPOINT_URL-"${{ secrets.B2_S3_ENDPOINT_URL }}" \
+          -e B2_S3_ENDPOINT_URL="${{ secrets.B2_S3_ENDPOINT_URL }}" \
           -e DOCKER_REPOSITORY="${{ secrets.DOCKER_REPOSITORY }}" \
           -e DOCKERHUB_USERNAME="${{ secrets.DOCKERHUB_USERNAME }}" \
           -e DOCKERHUB_TOKEN="${{ secrets.DOCKERHUB_PASSWORD }}" \
