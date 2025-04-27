@@ -67,16 +67,9 @@ async def download_file(file_name: str = Form(...)):
     
     
 @app.get("/viewfiles", response_model=List[str])
-async def view_files():
-    response = client.s3_client.list_objects_v2(Bucket='parzivalprimebucket01')
-    file_names = []
-
-    if 'Contents' in response:
-        for obj in response['Contents']:
-            file_names.append(obj['Key'])
-    print(file_names)
-
-    return file_names
+async def view_files_s():
+    response = client.view_files()
+    return response
     
 @app.post('/delete')
 async def deleteFile(file_name: str = Form(...)):

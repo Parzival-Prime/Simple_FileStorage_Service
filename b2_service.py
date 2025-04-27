@@ -42,6 +42,17 @@ class B2:
             print("Credentials not available.")
         except Exception as e:
             print(f"Error: {e}")
+            
+    def view_files(self):
+        response = self.s3_client.list_objects_v2(Bucket=bucket_name)
+        file_names = []
+
+        if 'Contents' in response:
+            for obj in response['Contents']:
+                file_names.append(obj['Key'])
+        print(file_names)
+
+        return file_names
 
         
     def delete_file(self, key):
